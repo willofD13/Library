@@ -1,18 +1,22 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read
-};
+class Book {
 
-Book.prototype.toggleReadStatus = function() {
-    this.read === 'yes' ? this.read = 'no': this.read ='yes';
-};
+    constructor(title, author, pages, read) {
+        this.title = title,
+        this.author = author,
+        this.pages = pages,
+        this.read = read
+    }
 
-function addBookToLibrary(book) {
-    myLibrary.push(book)
+    addBookToLibrary() {
+        myLibrary.push(this)
+    };
+
+    toggleReadStatus() {
+        this.read === 'yes' ? this.read = 'no': this.read ='yes';
+    };
+
 };
 
 function displayBooks() {
@@ -36,7 +40,8 @@ function displayBooks() {
         removeButton.dataset.index = i;
         removeButton.innerText = 'Remove Book';
         removeButton.addEventListener('click', ()=> {
-            delete myLibrary[removeButton.dataset.index];
+            const index = myLibrary.indexOf(removeButton.dataset.index);
+            myLibrary.splice(index,1);
         });
         document.body.appendChild(br);
         document.body.appendChild(removeButton);
@@ -67,7 +72,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     const userBook = new Book( title.value, author.value, pages.value, read.value);
     console.log(userBook);
-    addBookToLibrary(userBook);
+    userBook.addBookToLibrary();
 });
 
 showBooks.addEventListener('click', () => {
