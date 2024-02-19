@@ -50,31 +50,33 @@ function displayBooks() {
     }
 };
 
-const showBtn = document.getElementById("show-dialog");
-const showBooks = document.getElementById("show-books");
-const dialog = document.getElementById("dialog");
-const jsCloseBtn = dialog.querySelector("#js-close");
-const form = document.querySelector('form');
-const title = document.getElementById('title');
-const author = document.getElementById('author');
-const pages = document.getElementById('pages');
-const read = document.getElementById('read');
+const Events = (function() {
+    const showBtn = document.getElementById("show-dialog");
+    const showBooks = document.getElementById("show-books");
+    const dialog = document.getElementById("dialog");
+    const jsCloseBtn = dialog.querySelector("#js-close");
+    const form = document.querySelector('form');
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+    const pages = document.getElementById('pages');
+    const read = document.getElementById('read');
 
-showBtn.addEventListener("click", () => {
-  dialog.showModal();
-});
+    showBtn.addEventListener("click", () => {
+    dialog.showModal();
+    });
 
-jsCloseBtn.addEventListener("click", (e) => {
-  dialog.close();
-});
+    jsCloseBtn.addEventListener("click", (e) => {
+    dialog.close();
+    });
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const userBook = new Book( title.value, author.value, pages.value, read.value);
-    console.log(userBook);
-    userBook.addBookToLibrary();
-});
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const userBook = new Book( title.value, author.value, pages.value, read.value);
+        console.log(userBook);
+        userBook.addBookToLibrary();
+    });
 
-showBooks.addEventListener('click', () => {
-    displayBooks();
-});
+    showBooks.addEventListener('click', () => {
+        displayBooks();
+    });
+})()
