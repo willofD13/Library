@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     <h1>Books</h1>
+    <!-- A modal dialog containing a form -->
+    <dialog id="dialog">
+        <form method="dialog">
+          <p>
+            <label>
+              Title:
+              <input type="text" id="title" required />
+            </label>
+            <label>
+                Author:
+                <input type="text" id="author" required />
+            </label>
+            <label>
+                Pages:
+                <input type="text" id="pages" required />
+            </label>
+            <label>
+              Read:
+              <input type="text" id="read" required />
+          </label>
+          </p>
+          <div>
+            <input type="submit" id="js-close" value="JS close" />
+          </div>
+        </form>
+      </dialog>
+      <p>
+        <button id="show-dialog">Show the dialog</button>
+        <button id="show-books">Show books</button>
+      </p>
+      <output></output>
+      
+     
     <script src="main.js"></script>
 </body>
 </html>
